@@ -66,12 +66,12 @@
 			children = (
 				788C69901F45CB65006A1F01 /* AppDelegate.swift */,
 				788C69921F45CB65006A1F01 /* ViewController.swift */,
+				788C69A51F45CDA1006A1F01 /* PersistenceService.swift */,
 				788C69941F45CB65006A1F01 /* Main.storyboard */,
 				788C699A1F45CB65006A1F01 /* Assets.xcassets */,
 				788C699C1F45CB65006A1F01 /* LaunchScreen.storyboard */,
 				788C699F1F45CB65006A1F01 /* Info.plist */,
 				788C69971F45CB65006A1F01 /* Core_data_sample.xcdatamodeld */,
-				788C69A51F45CDA1006A1F01 /* PersistenceService.swift */,
 			);
 			path = "Core data sample";
 			sourceTree = "<group>";
@@ -317,6 +317,7 @@
 				788C69A41F45CB65006A1F01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

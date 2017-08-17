@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
+    }
+    
+    func fetchData() {
         let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
         do{
             let people = try PersistanceService.context.fetch(fetchRequest)
@@ -24,6 +28,7 @@ class ViewController: UIViewController {
             self.tableView.reloadData()
         }catch{
             print(error)}
+
     }
 
     @IBAction func onPlusTapped() {
@@ -53,7 +58,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITabBarDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -68,5 +73,20 @@ extension ViewController: UITableViewDataSource {
         return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            PersistanceService.context.delete(self.people[indexPath.row])
+            PersistanceService.saveContext()
+            people.removeAll()
+            fetchData()
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 
